@@ -62,7 +62,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       switch (exception.code) {
         case 'P2002':
           httpStatus = HttpStatus.CONFLICT;
-          message = `Duplicate entry: ${(exception.meta as { target?: string } | undefined)?.target ?? 'unknown'} already exists.`;
+          message = `Duplicate entry: ${JSON.stringify(exception.meta?.target ?? 'unknown')} already exists.`;
           error = 'Conflict';
           break;
         case 'P2025':
